@@ -1,0 +1,86 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap');
+
+:root {
+  /*========== colors ==========*/
+  --first-color: hsl(244, 47%, 20%);
+  --first-color-alt: hsl(243, 46%, 10%);
+  --text-color: hsl(244, 21%, 36%);
+  --text-color-light: hsl(244, 12%, 52%);
+  --body-color: hsl(244, 5%, 92%);
+  --container-color: hsl(0, 0%, 100%);
+
+  /*========== font & typography ==========*/
+  --body-font: "Heebo", sans-serif;
+  --h1-font-size: 2.4rem;
+  --normal-font-size: 1.6rem;
+  --small-font-size: 1.4rem;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  /*10px*/
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  direction: rtl;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  font-family: var(--body-font);
+  outline: none;
+  border: none;
+}
+
+.section {
+  padding-block: 12.8rem 3.2rem;
+}
+
+.sign-title {
+  font-weight: 600;
+  color: var(--first-color);
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  font-size: var(--small-font-size);
+}
+
+.sign-input {
+  width: 100%;
+  padding: .4rem .8rem;
+  color: var(--text-color-light);
+  border-radius: .3rem;
+}
+
+.sign-btn {
+  background-color: var(--first-color);
+  color: var(--body-color);
+  font-size: 1.2rem;
+  border-radius: .3rem;
+  height: 2.9rem;
+}
+
+.sign-btn:hover {
+  background-color: var(--first-color-alt);
+  color: var(--body-color);
+}
