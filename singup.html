@@ -17,16 +17,6 @@
 </head>
 
 <body>
-  <!--==================== HEADER ====================-->
-  <header class="header">
-    <nav class="nav container">
-      <a href="/login.html" class="login-btn--link">
-        <i class='bx bx-log-in-circle'></i>
-        <div class="login-btn--text">Login</div>
-      </a>
-    </nav>
-  </header>
-
   <!--==================== MAIN ====================-->
   <main class="main">
     <!--==================== SIGN UP ====================-->
@@ -35,9 +25,14 @@
         <div class="signup-data">
           <h2 class="section-title">Signup</h2>
           <p class="section-subtitle">
-            Enter details blow to signup to the system.
+            Signup now and get full access to our app.
           </p>
         </div>
+
+        <p class="error hide-element">
+          <i class='bx bx-error error-logo'></i>
+          <span class="error-text"></span>
+        </p>
 
         <div class="signup-form grid">
           <div class="name-container grid">
@@ -71,7 +66,9 @@
           </button>
         </div>
 
-        <p class="signup-error hide-element"></p>
+        <div class="login-link">
+          Don't have an acount ? <a href="/login.html">Login</a>
+        </div>
       </div>
     </section>
 

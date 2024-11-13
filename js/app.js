@@ -1,7 +1,7 @@
 import Manager from "./classes/manager.js";
 const manager = new Manager();
 
-const signupError = document.querySelector(".signup-error");
+const error = document.querySelector(".error");
 const singupBtn = document.querySelector(".signup-btn");
 const usersTableDetails = document.querySelector(".users-details");
 
@@ -24,7 +24,7 @@ window.validateName = function validateName(name) {
     inputValidator[nameArr] = false;
     displayError(nameArr);
   } else
-    hideError();
+    hideError(name);
 
   disableBtn();
 };
@@ -39,7 +39,7 @@ window.validateEmail = function validateEmail(email) {
     inputValidator[emailArr] = false;
     displayError(emailArr);
   } else
-    hideError();
+    hideError(email);
 
   disableBtn();
 }
@@ -53,7 +53,7 @@ window.validatePassword = function validatePassword(password) {
     inputValidator[passwordArr] = false;
     displayError(passwordArr);
   } else
-    hideError();
+    hideError(password);
   disableBtn();
 }
 
@@ -61,18 +61,20 @@ window.validatePassword = function validatePassword(password) {
 function displayError(arr) {
   const errorMsg = {
     "name": "name must contain only letters",
-    "email": "Invalid email formt",
+    "email": "Invalid email formt, must contain @",
     "password": "Password must be at least 8 characters long.",
-    "existUser": `Sorry, we couldn't register you, because the user already exists`,
+    "existUser": `It looks like you already have an account.`,
   }
 
-  signupError.classList.remove("hide-element");
-  signupError.textContent = errorMsg[arr];
+  error.classList.remove("hide-element");
+  document.querySelector(`input[name=${arr}]`).classList.add("error-border");
+  document.querySelector(".error-text").textContent = errorMsg[arr];
 }
 
 // func -> hide error msg
-function hideError() {
-  signupError.classList.add("hide-element");
+function hideError(inputFiled) {
+  error.classList.add("hide-element");
+  inputFiled.classList.remove("error-border");
 }
 
 // fun -> disable / active btn

@@ -2,7 +2,7 @@ import Manager from "./classes/manager.js";
 
 const manager = new Manager();
 const loginBtn = document.querySelector(".login-btn");
-const signupError = document.querySelector(".signup-error");
+const error = document.querySelector(".error");
 let registeredUser;
 
 loginBtn.addEventListener("click", login);
@@ -28,12 +28,14 @@ function login() {
     registeredUser = manager.login(email.value, password.value);
 
     if (registeredUser !== null) {
-      signupError.classList.add("hide-element");
       showUsersTable();
-    } else
-      signupError.classList.remove("hide-element");
+      error.classList.add("hide-element");
+    } else {
+      const errorMsg = "Invalid email or password"
+      displayErrorMessages(errorMsg);
+    }
+    clearInputs();
   }
-  clearInputs();
 }
 
 // func => display all registered user
@@ -49,11 +51,19 @@ function showUsersTable() {
           <td>${user.lastName}</td>
           <td>${user.email}</td>
           <td>${user.password}</td>
+
           <td>
             <button class="users-btn delete-btn" onclick="deleteUser(${user.id})">
               <i class='bx bx-trash'></i>
             </button>
           </td>
+
+          <td>
+            <button class="users-btn edit-btn" onclick="editUser(${user.id})">
+              <i class='bx bx-edit'></i>
+            </button>
+          </td>
+
           <td>
             <button class="users-btn logout-btn" onclick="logoutUser(${user.id})">
               <i class='bx bx-log-out'></i>
@@ -67,9 +77,16 @@ function showUsersTable() {
           <td>${user.lastName}</td>
           <td>${user.email}</td>
           <td>${user.password}</td>
+
           <td>
             <button class="users-btn delete-btn" onclick="deleteUser(${user.id})">
               <i class='bx bx-trash'></i>
+            </button>
+          </td>
+
+          <td>
+            <button class="users-btn edit-btn" onclick="editUser(${user.id})">
+              <i class='bx bx-edit'></i>
             </button>
           </td>
         </tr>`;
@@ -82,6 +99,9 @@ window.logoutUser = function logoutUser(id) {
   if (registeredUser.id === id) {
     manager.logout(id);
     showUsersTable();
+  } else {
+    const errorMsg = "Sorry, you can only logout from your account"
+    displayErrorMessages(errorMsg);
   }
 }
 
@@ -91,7 +111,24 @@ window.deleteUser = function deleteUser(id) {
   if (registeredUser.id === id) {
     manager.deleteUser(id);
     showUsersTable();
+  } else {
+    const errorMsg = "Sorry, you can only remove yourself"
+    displayErrorMessages(errorMsg);
+
+    // setTimeout(() => {
+    //   error.classList.add("hide-element");
+    // }, 5000);
   }
+}
+
+// func - display error messages
+function displayErrorMessages(text) {
+  error.classList.remove("hide-element");
+  document.querySelector(".error-text").textContent = text;
+
+  setTimeout(() => {
+    error.classList.add("hide-element");
+  }, 5000);
 }
 
 function clearInputs() {

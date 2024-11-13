@@ -17,16 +17,6 @@
 </head>
 
 <body>
-  <!--==================== HEADER ====================-->
-  <header class="header">
-    <nav class="nav container">
-      <a href="/singup.html" class="login-btn--link">
-        <i class='bx bx-user-plus'></i>
-        <div class="login-btn--text">Sign</div>
-      </a>
-    </nav>
-  </header>
-
   <!--==================== MAIN ====================-->
   <main class="main">
     <!--==================== LOGIN ====================-->
@@ -55,8 +45,13 @@
           </button>
         </div>
 
-        <p class="signup-error hide-element">
-          User doesnt exsit 😥
+        <div class="signup-link">
+          Already have an account ? <a href="/singup.html">Signup</a>
+        </div>
+
+        <p class="error hide-element">
+          <i class='bx bx-error error-logo'></i>
+          <span class="error-text"></span>
         </p>
       </div>
     </section>
