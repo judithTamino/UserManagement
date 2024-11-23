@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+
+  <!--=============== FAVICON ===============-->
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <!--=============== BOXICONS ===============-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!--==================== SIGN UP ====================-->
+  <section class="signup section">
+    <div class="signup-container container">
+      <div class="signup-data">
+        <h2 class="section-title">Signup</h2>
+        <p class="section-subtitle">
+          Signup now and get full access to our app.
+        </p>
+      </div>
+
+      <div class="form grid">
+        <div class="fullname-container grid">
+          <!-- first-name -->
+          <div class="input-group">
+            <i class='bx bx-user input-icon'></i>
+            <input type="text" class="form-input" id="first-name" name="name" placeholder="First Name"
+              oninput="validateName(this)" autofocus required>
+          </div>
+          <!-- last name -->
+          <div class="input-group">
+            <i class='bx bx-user input-icon'></i>
+            <input type="text" class="form-input" id="last-name" name="name" placeholder="Last Name"
+              oninput="validateName(this)" required>
+          </div>
+        </div>
+        <!-- email -->
+        <div class="input-group">
+          <i class='bx bx-at input-icon'></i>
+          <input type="email" id="email" class="form-input" name="email" placeholder="Email"
+            oninput="validateEmail(this)" required>
+        </div>
+        <!-- password -->
+        <div class="input-group">
+          <i class='bx bx-lock-alt input-icon'></i>
+          <input type="password" id="password" class="form-input" name="password" placeholder="Password"
+            oninput="validatePassword(this)" required>
+        </div>
+
+        <button class="btn form-btn" onclick="signup()" disabled>
+          Signup
+        </button>
+      </div>
+
+      <div class="link">
+        Already have an account ? <a href="/login.html">Login</a>
+      </div>
+
+      <div class="msg-container hide-element" id="error">
+        <i class='bx bx-error error-logo'></i>
+        <span class="error-text"></span>
+      </div>
+
+      <div class=" msg-container hide-element" id="success">
+        <i class='bx bx-check-square success-logo'></i>
+        <span class="success-text"></span>
+      </div>
+    </div>
+  </section>
+
+  <!--=============== JS FILE ===============-->
+  <script type="module" src="js/signup.js"></script>
+</body>
+
+</html>

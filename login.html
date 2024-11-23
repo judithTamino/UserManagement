@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+
+  <!--=============== FAVICON ===============-->
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <!--=============== BOXICONS ===============-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!--==================== LOGIN ====================-->
+  <section class="login section">
+    <div class="login-container container">
+      <div class="login-data">
+        <h2 class="section-title">Login</h2>
+        <p class="section-subtitle">To login in to the system, please enter details.</p>
+      </div>
+
+      <div class="form grid">
+        <!-- email -->
+        <div class="input-group">
+          <i class='bx bx-at input-icon'></i>
+          <input type="email" id="email" class="form-input" name="email" placeholder="Email"
+            oninput="isFieldsEmpty(this)" autofocus required>
+        </div>
+        <!-- password -->
+        <div class="input-group">
+          <i class='bx bx-lock-alt input-icon'></i>
+          <input type="password" id="password" class="form-input" name="password" placeholder="Password"
+            oninput="isFieldsEmpty(this)" required>
+        </div>
+        <!-- login button -->
+        <button class="btn form-btn" id="login-btn">
+          Login
+        </button>
+      </div>
+
+      <div class="link">
+        Don't have an acount ? <a href="/signup.html">Signup</a>
+      </div>
+
+      <div class="msg-container hide-element" id="error">
+        <i class='bx bx-error error-logo'></i>
+        <span class="error-text"></span>
+      </div>
+
+      <div class=" msg-container hide-element" id="success">
+        <i class='bx bx-check-square success-logo'></i>
+        <span class="success-text"></span>
+      </div>
+    </div>
+  </section>
+
+  <!--==================== USERS TABLE ====================-->
+  <section class="users section hide-element">
+    <div class="users-container container">
+      <div class="users-data">
+        <h2 class="section-title" id="users-title"></h2>
+        <p class="section-subtitle" id="users-subtitle"></p>
+      </div>
+
+      <div class="table-container">
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>First</th>
+              <th>Last</th>
+              <th>Email</th>
+              <th>Password</th>
+            </tr>
+          </thead>
+          <tbody class="users-details"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!--==================== EDIT PROFILE ====================-->
+  <section class="edit section hide-element">
+    <div class="edit-container container">
+      <div class="login-data">
+        <h2 class="section-title edit-title">Edit Profile</h2>
+      </div>
+
+      <div class="form grid">
+        <div class="fullname-container grid">
+          <!-- first-name -->
+          <div class="input-group">
+            <i class='bx bx-user input-icon'></i>
+            <input type="text" class="form-input" id="edit-firstName" name="name" placeholder="First Name"
+              oninput="validateName(this)" autofocus required>
+
+              <span class="edit-error hide-element" id="name-error">Invalid name.</span>
+          </div>
+          <!-- last name -->
+          <div class="input-group">
+            <i class='bx bx-user input-icon'></i>
+            <input type="text" class="form-input" id="edit-lastName" name="name" placeholder="Last Name"
+              oninput="validateName(this)" required>
+          </div>
+        </div>
+        <!-- email -->
+        <div class="input-group">
+          <i class='bx bx-at input-icon'></i>
+          <input type="email" id="edit-email" class="form-input" name="email" placeholder="Email"
+            oninput="validateEmail(this)" required>
+        </div>
+        <!-- password -->
+        <div class="input-group">
+          <i class='bx bx-lock-alt input-icon'></i>
+          <input type="password" id="edit-password" class="form-input" name="password" placeholder="Password"
+            oninput="validatePassword(this)" required>
+        </div>
+
+        <button class="btn form-btn" id="edit-btn">
+          Edit
+        </button>
+      </div>
+
+      <i class='bx bx-x close-icon' onclick="closeEdit()"></i>
+    </div>
+  </section>
+
+  <!--=============== JS FILE ===============-->
+  <script type="module" src="js/login.js"></script>
+</body>
+
+</html>

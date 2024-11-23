@@ -1,0 +1,331 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap');
+
+:root {
+  /*========== colors ==========*/
+  --first-color: #a694e0;
+  --first-color-alt: #8576b3;
+  --second-color: #FFD803;
+  --text-color: #373342;
+  --text-color-light: #5d5770;
+  --body-color: #f7f5ff;
+  --container-color: #dbd9e2;
+  --error-color: #ff0022;
+  --success-color: #25D366;
+  /*========== font & typography ==========*/
+  --body-font: "Rubik", sans-serif;
+  --h1-font-size: 2.4rem;
+  --h2-font-size: 2rem;
+  --normal-font-size: 1.6rem;
+  --small-font-size: 1.4rem;
+  /*========== font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+}
+
+/*=============== BASE ===============*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  font-weight: var(--normal-font-size);
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--body-color);
+}
+
+input,
+button {
+  outline: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1024px;
+  margin: 0 2.4rem;
+}
+
+.section {
+  padding: 4.8rem 0 2.4rem;
+}
+
+.section-title {
+  font-size: var(--h1-font-size);
+  margin-bottom: .8rem;
+  letter-spacing: .2rem;
+  text-transform: capitalize;
+}
+
+.section-subtitle {
+  color: var(--text-color-light);
+  margin-bottom: 2.4rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2.4rem;
+}
+
+/*=============== SIGN UP & LOGIN ===============*/
+.signup-container,
+.login-container {
+  max-width: 400px;
+}
+
+.fullname-container {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.input-group {
+  position: relative;
+}
+
+.form-input {
+  width: 100%;
+  height: 45px;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  padding-left: 4.8rem;
+  font-size: var(--small-font-size);
+  transition: all .5s ease;
+}
+
+.form-input::placeholder {
+  color: var(--text-color-light);
+}
+
+.form-input:hover,
+.form-input:focus {
+  border-color: var(--first-color);
+  box-shadow: 0 0 0 5px rgb(165 147 224 / 30%);
+}
+
+.input-icon {
+  position: absolute;
+  left: 1.6rem;
+  top: 1.4rem;
+  font-size: 1.6rem;
+}
+
+.form-btn {
+  width: 100%;
+  height: 45px;
+  border-radius: 0.5rem;
+  font-weight: var(--font-semi-bold);
+  background-color: var(--first-color);
+  color: var(--body-color);
+  margin-bottom: 3.2rem;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.form-btn:hover,
+.form-btn:active {
+  background-color: var(--first-color-alt);
+}
+
+.form-btn:disabled {
+  background-color: var(--container-color);
+  cursor: not-allowed;
+}
+
+.link {
+  text-align: center;
+}
+
+.link a {
+  color: var(--first-color-alt);
+  text-decoration: underline;
+}
+
+.link a:hover,
+.link a:active {
+  text-decoration: none;
+}
+
+/*=============== USERS TABLE ===============*/
+.table-container {
+  overflow-x: auto;
+}
+
+.users-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: .8rem;
+}
+
+.users-table thead th {
+  color: var(--text-color);
+  font-weight: var(--font-medium);
+}
+
+.users-details td:nth-child(1),
+.users-details td:nth-child(2) {
+  text-transform: capitalize;
+}
+
+.users-details td {
+  color: var(--text-color-light);
+}
+
+.users-btn {
+  background-color: transparent;
+  transform: scale(1.2);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all .2s linear;
+}
+
+.users-btn:hover,
+.users-btn:active {
+  transform: scale(1.5);
+}
+
+.delete-btn {
+  color: var(--error-color);
+}
+
+.edit-btn {
+  color: var(--first-color-alt);
+}
+
+.logout-btn {
+  color: #645986;
+}
+
+.admin {
+  background-color: rgb(165 147 224 / 15%);
+}
+
+/*=============== EDIT PROFILE ===============*/
+.edit {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(165 147 224 / 30%);
+}
+
+.edit-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 360px;
+  background-color: var(--body-color);
+  padding: 4.8rem 2.4rem;
+  border-radius: .5rem;
+}
+
+.edit-title {
+  font-size: var(--h2-font-size);
+  margin-bottom: 2.4rem;
+}
+
+.close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: var(--h2-font-size);
+  cursor: pointer;
+}
+
+.hide-element {
+  display: none;
+}
+
+.edit-error {
+  display: inline-block;
+  color: var(--error-color);
+  font-size: var(--small-font-size);
+  margin-top: .8rem;
+}
+
+.msg-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--small-font-size);
+  margin-block: 2.4rem;
+  gap: .8rem;
+}
+
+.msg-container i {
+  font-size: 1.8rem;
+}
+
+#error {
+  color: var(--error-color);
+}
+
+.error-border,
+.error-border:hover,
+.error-border:focus {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 5px rgb(230 45 45 / 30%);
+}
+
+#success {
+  color: #25D366;
+}
+
+.hide-element {
+  display: none;
+}
+
+/*=============== BREAKPOINTS ===============*/
+@media only screen and (min-width: 540px) {
+  .signup-container,
+  .login-container {
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .section {
+    padding: 2.4rem 0 4.8rem;
+  }
+}
+
+@media only screen and (min-width: 1140px) {
+  .container {
+    margin: 0 auto;
+  }
+}
+
+/*=============== RESPONSIVE TYPOGRAPHY ===============*/
+@media screen and (min-width: 1024px) {
+  :root {
+    --h1-font-size: 3rem;
+    --h2-font-size: 2.4rem;
+    --normal-font-size: 1.8rem;
+    --small-font-size: 1.6rem;
+  }
+}
