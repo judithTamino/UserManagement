@@ -39,7 +39,7 @@
             oninput="isFieldsEmpty(this)" required>
         </div>
         <!-- login button -->
-        <button class="btn form-btn" id="login-btn">
+        <button class="btn form-btn" id="login-btn" onclick="login()">
           Login
         </button>
       </div>
@@ -81,52 +81,6 @@
           <tbody class="users-details"></tbody>
         </table>
       </div>
-    </div>
-  </section>
-
-  <!--==================== EDIT PROFILE ====================-->
-  <section class="edit section hide-element">
-    <div class="edit-container container">
-      <div class="login-data">
-        <h2 class="section-title edit-title">Edit Profile</h2>
-      </div>
-
-      <div class="form grid">
-        <div class="fullname-container grid">
-          <!-- first-name -->
-          <div class="input-group">
-            <i class='bx bx-user input-icon'></i>
-            <input type="text" class="form-input" id="edit-firstName" name="name" placeholder="First Name"
-              oninput="validateName(this)" autofocus required>
-
-              <span class="edit-error hide-element" id="name-error">Invalid name.</span>
-          </div>
-          <!-- last name -->
-          <div class="input-group">
-            <i class='bx bx-user input-icon'></i>
-            <input type="text" class="form-input" id="edit-lastName" name="name" placeholder="Last Name"
-              oninput="validateName(this)" required>
-          </div>
-        </div>
-        <!-- email -->
-        <div class="input-group">
-          <i class='bx bx-at input-icon'></i>
-          <input type="email" id="edit-email" class="form-input" name="email" placeholder="Email"
-            oninput="validateEmail(this)" required>
-        </div>
-        <!-- password -->
-        <div class="input-group">
-          <i class='bx bx-lock-alt input-icon'></i>
-          <input type="password" id="edit-password" class="form-input" name="password" placeholder="Password"
-            oninput="validatePassword(this)" required>
-        </div>
-
-        <button class="btn form-btn" id="edit-btn">
-          Edit
-        </button>
-      </div>
-
-      <i class='bx bx-x close-icon' onclick="closeEdit()"></i>
     </div>
   </section>
 
