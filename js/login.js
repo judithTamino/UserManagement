@@ -6,15 +6,12 @@ const usersTitle = document.getElementById("users-title");
 const usersSubtitle = document.getElementById("users-subtitle");
 let registeredUser;
 
-document.getElementById("login-btn").addEventListener('click', login);
+window.onload = () => {
+  let registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
 
-// func -> check if first and last name fileds are valid.
-window.validateName = name => {
-  const namePattern = /^[a-zA-Z\s-]+$/;
-  if (!namePattern.test(name.value))
-    return false;
-  else
-    return true;
+  if (registeredUser !== null) {
+    registeredUser.permissions ? showUsersDetailsForAdmin() : showUserDetails();
+  }
 }
 
 // func -> check if email / password fileds are empty
@@ -29,7 +26,7 @@ window.isFieldsEmpty = (inputField) => {
 }
 
 // func -> log in user to the system
-function login() {
+window.login = () => {
   const email = document.getElementById("email");
   const password = document.getElementById("password");
 
@@ -44,6 +41,8 @@ function login() {
       displayErrorMsg(email, errorMsg);
       displayErrorMsg(password, errorMsg);
     }
+
+    localStorage.setItem("registeredUser", JSON.stringify(registeredUser));
     clearInputs();
   }
 }
@@ -134,7 +133,7 @@ function showUserDetails() {
     </td>
 
     <td>
-      <button class="users-btn edit-btn" onclick="openEditUserProfile(${registeredUser.id})">
+      <button class="users-btn edit-btn" onclick="editUser(${registeredUser.id})">
         <i class='bx bx-edit'></i>
       </button>
     </td>
@@ -161,6 +160,12 @@ window.deleteUser = id => {
   else document.querySelector(".users").classList.add("hide-element");
 }
 
+window.editUser = id => {
+  localStorage.setItem("userIdToUpdate", id);
+  // move user to edit profile page
+  window.location.href = "/updateProfile.html";
+}
+
 // func -> log out user from system
 // only the user himself can log himself from the system
 window.logoutUser = function logoutUser(id) {
@@ -171,14 +176,16 @@ window.logoutUser = function logoutUser(id) {
     registeredUser.permissions ? showUsersDetailsForAdmin() : " ";
   else
     document.querySelector(".users").classList.add("hide-element");
+
+  localStorage.setItem("registeredUser", JSON.stringify(null));
 }
 
 // func -> open edit profile page
-window.openEditUserProfile = id => {
-  document.querySelector(".edit").classList.remove("hide-element");
+// window.openEditUserProfile = id => {
+//   document.querySelector(".edit").classList.remove("hide-element");
 
-  document.getElementById("edit-btn").addEventListener('click', editUserProfile(id));
-}
+//   document.getElementById("edit-btn").addEventListener('click', editUserProfile(id));
+// }
 
 // func -> edit user details
 // function editUserProfile(id) {

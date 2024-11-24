@@ -59,9 +59,33 @@ class Manager {
     localStorage.setItem("users", JSON.stringify(this.users));
   }
 
-  editFirstName(id, newFirstName) {
-    const firstNameIndexToEdit = this.users.findIndex(user => user.id === id);
-    this.users[firstNameIndexToEdit] = newFirstName;
+  updateFirstName(id, newFirstName) {
+    const userIndexToEdit = this.users.findIndex(user => user.id === id);
+    this.users[userIndexToEdit].firstName = newFirstName;
+
+    // update localStorage
+    localStorage.setItem("users", JSON.stringify(this.users));
+  }
+
+  updateLastName(id, newLastName) {
+    const userIndexToEdit = this.users.findIndex(user => user.id === id);
+    this.users[userIndexToEdit].lastName = newLastName;
+
+    // update localStorage
+    localStorage.setItem("users", JSON.stringify(this.users));
+  }
+
+  updateEmail(id, newEmail) {
+    const userIndexToEdit = this.users.findIndex(user => user.id === id);
+    this.users[userIndexToEdit].email = newEmail;
+
+    // update localStorage
+    localStorage.setItem("users", JSON.stringify(this.users));
+  }
+
+  updatePassword(id, newPassword) {
+    const userIndexToEdit = this.users.findIndex(user => user.id === id);
+    this.users[userIndexToEdit].password = newPassword;
 
     // update localStorage
     localStorage.setItem("users", JSON.stringify(this.users));

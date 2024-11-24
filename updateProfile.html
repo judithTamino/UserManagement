@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management</title>
+
+  <!--=============== FAVICON ===============-->
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+  <!--=============== BOXICONS ===============-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!--=============== CSS ===============-->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!--==================== EDIT PROFILE ====================-->
+  <section class="edit section">
+    <div class="edit-container container">
+      <div class="login-data">
+        <h2 class="section-title edit-title">Edit Profile</h2>
+      </div>
+
+      <div class="form grid">
+        <div class="fullname-container grid">
+          <!-- first-name -->
+          <div class="input-group">
+            <i class='bx bx-user input-icon'></i>
+            <input type="text" class="form-input" id="first-name" name="first name" placeholder="First Name" oninput="validateName(this)" autofocus>
+          </div>
+
+          <!-- last name -->
+          <div class="input-group">
+            <i class='bx bx-user input-icon'></i>
+            <input type="text" class="form-input" id="last-name" name="last name" placeholder="Last Name"
+              oninput="validateName(this)" required>
+          </div>
+        </div>
+        <!-- email -->
+        <div class="input-group">
+          <i class='bx bx-at input-icon'></i>
+          <input type="email" id="email" class="form-input" name="email" placeholder="Email"
+            oninput="validateEmail(this)" required>
+        </div>
+        <!-- password -->
+        <div class="input-group">
+          <i class='bx bx-lock-alt input-icon'></i>
+          <input type="password" id="password" class="form-input" name="password" placeholder="Password"
+            oninput="validatePassword(this)" required>
+        </div>
+
+        <div class="btns-container grid">
+          <button class="btn form-btn" id="edit-btn" onclick="updateProfile()">
+            Edit
+          </button>
+          <a href="/login.html" class="btn form-btn" id="cancel-btn">Cancel</a>
+        </div>
+      </div>
+
+      <div class="msg-container hide-element" id="error">
+        <i class='bx bx-error error-logo'></i>
+        <span class="error-text"></span>
+      </div>
+
+      <div class=" msg-container hide-element" id="success">
+        <i class='bx bx-check-square success-logo'></i>
+        <span class="success-text"></span>
+      </div>
+    </div>
+  </section>
+
+  <!--=============== JS FILE ===============-->
+  <script type="module" src="js/updateProfile.js"></script>
+</body>
+
+</html>
