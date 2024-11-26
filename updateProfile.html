@@ -29,27 +29,37 @@
           <!-- first-name -->
           <div class="input-group">
             <i class='bx bx-user input-icon'></i>
-            <input type="text" class="form-input" id="first-name" name="first name" placeholder="First Name" oninput="validateName(this)" autofocus>
+            <input type="text" class="form-input" id="first-name" placeholder="First Name" oninput="validateName(this)"
+              autofocus>
           </div>
 
           <!-- last name -->
           <div class="input-group">
             <i class='bx bx-user input-icon'></i>
-            <input type="text" class="form-input" id="last-name" name="last name" placeholder="Last Name"
-              oninput="validateName(this)" required>
+            <input type="text" class="form-input" id="last-name" placeholder="Last Name" oninput="validateName(this)">
           </div>
         </div>
+
         <!-- email -->
         <div class="input-group">
           <i class='bx bx-at input-icon'></i>
-          <input type="email" id="email" class="form-input" name="email" placeholder="Email"
-            oninput="validateEmail(this)" required>
+          <input type="email" id="email" class="form-input" placeholder="Email" oninput="validateEmail(this)">
         </div>
+
         <!-- password -->
         <div class="input-group">
           <i class='bx bx-lock-alt input-icon'></i>
-          <input type="password" id="password" class="form-input" name="password" placeholder="Password"
-            oninput="validatePassword(this)" required>
+          <input type="password" id="password" class="form-input" placeholder="Password"
+            oninput="validatePassword(this)">
+        </div>
+
+        <!-- permissions -->
+        <div class="input-group hide-element" id="permissions-container">
+          <select id="permissions" class="form-input">
+            <option value="" selected>Choose User Role</option>
+            <option value="true">Admin</option>
+            <option value="false">User</option>
+          </select>
         </div>
 
         <div class="btns-container grid">

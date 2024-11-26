@@ -90,6 +90,25 @@ class Manager {
     // update localStorage
     localStorage.setItem("users", JSON.stringify(this.users));
   }
+
+  findUser(id) {
+    const userIndex = this.users.findIndex(user => user.id === id);
+    return this.users[userIndex];
+  }
+
+  changePermissions(id, role) {
+    const userIndex = this.users.findIndex(user => user.id === id);
+    const admins = this.users.filter(user => user.permissions);
+
+    this.users[userIndex].permissions = role;
+
+    // if admin change his role to user and there are no more admins, the last user become admin automatically
+    if (admins.length === 0 && this.users.length > 0)
+      this.users[admins.length - 1].permissions = true;
+
+    // update localStorage
+    localStorage.setItem("users", JSON.stringify(this.users));
+  }
 }
 
 export default Manager;

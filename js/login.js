@@ -7,7 +7,7 @@ const usersSubtitle = document.getElementById("users-subtitle");
 let registeredUser;
 
 window.onload = () => {
-  let registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
+  registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
 
   if (registeredUser !== null) {
     registeredUser.permissions ? showUsersDetailsForAdmin() : showUserDetails();
@@ -179,23 +179,6 @@ window.logoutUser = function logoutUser(id) {
 
   localStorage.setItem("registeredUser", JSON.stringify(null));
 }
-
-// func -> open edit profile page
-// window.openEditUserProfile = id => {
-//   document.querySelector(".edit").classList.remove("hide-element");
-
-//   document.getElementById("edit-btn").addEventListener('click', editUserProfile(id));
-// }
-
-// func -> edit user details
-// function editUserProfile(id) {
-//   const firstName = document.getElementById("edit-firstName");
-
-//   if (validateName(firstName) && firstName.value !== "") {
-//     manager.editFirstName(id, firstName);
-//     displaySuccessMsg(`Details have been successfully update`);
-//   } else
-// }
 
 // func -> display error msg to the user
 function displayErrorMsg(inputField, errorMsg) {

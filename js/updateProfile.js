@@ -5,71 +5,93 @@ const firstName = document.getElementById("first-name");
 const lastName = document.getElementById('last-name');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
+let userRole;
 let id = parseInt(localStorage.getItem("userIdToUpdate"));
+
+window.onload = () => {
+  const userToUpdate = manager.findUser(id);
+
+  firstName.placeholder = `${userToUpdate.firstName}`;
+  lastName.placeholder = `${userToUpdate.lastName}`;
+  email.placeholder = `${userToUpdate.email}`;
+  password.placeholder = `${userToUpdate.password}`;
+
+  // if user is admin display the option to make other users admin.
+  const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
+  const permissionsContainer = document.getElementById("permissions-container");
+
+  if (registeredUser.permissions) {
+    permissionsContainer.classList.remove("hide-element");
+    userRole = document.getElementById("permissions");
+  } else
+    permissionsContainer.classList.add("hide-element");
+}
+
+// func -> edit user profile (when use is admin)
+
 
 // func -> edit user details
 window.updateProfile = () => {
   const validFirstName = validateName(firstName);
   const validLastName = validateName(lastName);
   const validEmail = validateEmail(email);
+  const validPassword = validatePassword(password);
 
-  if (!validFirstName || !validLastName || !validEmail) {
-    if (!validFirstName) {
-      displayErrorMsg(firstName, "Invalid first name");
-      return;
-    }
-     
-    if (!validLastName) {
-      displayErrorMsg(lastName, "Invalid last name");
-      return;
-    }
-      
-    if (!validEmail) {
-      displayErrorMsg(email, "Invalid email address");
-      return;
-    } 
+  if (!validFirstName || !validLastName || !validEmail || !validPassword) {
+    if (!validFirstName)
+      displayErrorMsg(firstName, "Invalid first name.");
+    else if (!validLastName)
+      displayErrorMsg(lastName, "Invalid last name.");
+    else if (!validEmail)
+      displayErrorMsg(email, "Invalid email address.");
+    else
+      displayErrorMsg(password, "Password must include at least 8 characters.");
   } else {
-    if (firstName.value !== "")
+
+    if (firstName.value === "" && lastName.value === "" && email.value === "" && password.value === "") {
+      if (userRole !== undefined) {
+        if (userRole.value === "") {
+          displayErrorMsg("", "Please fill in at least one of the fields.")
+          return;
+        }
+      } else {
+        displayErrorMsg("", "Please fill in at least one of the fields.");
+        return;
+      }
+    }
+
+    // update first name
+    if (firstName.value !== "") {
       manager.updateFirstName(id, firstName.value);
-    if (lastName.value !== "")
+      displaySuccessMsg();
+    }
+
+    // update last name
+    if (lastName.value !== "") {
       manager.updateLastName(id, lastName.value);
-    if (email.value !== "")
+      displaySuccessMsg();
+    }
+
+    // update email
+    if (email.value !== "") {
       manager.updateEmail(id, email.value);
+      displaySuccessMsg();
+    }
 
-    displaySuccessMsg();
+    // update password
+    if (password.value !== "") {
+      manager.updatePassword(id, password.value);
+      displaySuccessMsg();
+    }
+
+    // update user role
+    if (userRole !== undefined)
+      if (userRole.value !== "") {
+        manager.changePermissions(id, userRole.value);
+        displaySuccessMsg();
+      }
+    clearInputs();
   }
-  // update first name
-  // if (validateName(firstName)) {
-  //   if (firstName.value !== "") {
-  //     
-  //     displaySuccessMsg();
-  //   }
-  // } else {
-  //   displayErrorMsg(firstName, "Invalid first name");
-  //   return;
-  // }
-
-  // // update last name
-  // if (validateName(lastName)) {
-  //   if (lastName.validateName !== "") {
-  //     manager.updateLastName(id, lastName.value);
-  //     displaySuccessMsg();
-  //   }
-  // } else {
-  //   displayErrorMsg(lastName, "Invalid last name");
-  //   return;
-  // }
-
-  // // update email
-  // if(validateEmail(email)) {
-  //   if(email.value !== "") {
-  //     manager.updateEmail(id, email.value);
-  //     displaySuccessMsg();
-  //   } else {
-  //     displayErrorMsg(email, "Invalid email address");
-  //     return;
-  //   }
-  // }
 }
 
 // func -> check if first and last name fileds are valid.
@@ -94,25 +116,14 @@ window.validateEmail = email => {
   return false;
 }
 
-// // func -> check if password field valid
-// window.validatePassword = password => {
-//   isPasswordValid = true;
-
-//   if (password.value.length < 8) {
-//     isPasswordValid = false;
-//     displayErrorMsg(password, "Password must include at least 8 characters.");
-//   } else hideErrorMsg(password);
-//   toggleBtn();
-// }
-
-// func -> activate and disabled button
-// function toggleBtn() {
-//   const formBtn = document.querySelector(".form-btn");
-
-//   if (isNameValid || isEmailValid || isPasswordValid)
-//     formBtn.disabled = false;
-//   else formBtn.disabled = true;
-// }
+// func -> check if password field valid
+window.validatePassword = password => {
+  if (password.value.length >= 8 || password.value === "") {
+    hideErrorMsg(password);
+    return true;
+  }
+  return false;
+}
 
 // func -> display error msg to the user
 function displayErrorMsg(inputField, errorMsg) {
@@ -136,6 +147,14 @@ function displaySuccessMsg() {
   document.querySelector(".success-text").textContent = 'Details have been successfully update';
 
   setTimeout(() => {
-    // window.location.href = "/login.html";
+    window.location.href = "/login.html";
   }, 3000);
+}
+
+// func -> clear input fields after signup
+function clearInputs() {
+  firstName.value = "";
+  lastName.value = "";
+  email.value = "";
+  password.value = "";
 }

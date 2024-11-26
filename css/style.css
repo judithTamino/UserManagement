@@ -39,6 +39,7 @@ html {
 
 body,
 input,
+select,
 button {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
@@ -51,6 +52,7 @@ body {
 }
 
 input,
+select,
 button {
   outline: none;
   border: none;
@@ -234,7 +236,8 @@ th, td {
 }
 
 #cancel-btn {
-  background-color: var(--container-color);
+  background-color: transparent;
+  border: 3px solid var(--container-color);
   color: var(--first-color-alt);
   display: flex;
   align-items: center;
@@ -244,8 +247,7 @@ th, td {
 
 #cancel-btn:hover,
 #cancel-btn:active {
-  background-color: transparent;
-  border: 3px solid var(--container-color);
+  background-color: var(--container-color);
 }
 
 /*=============== USER MSG ===============*/
